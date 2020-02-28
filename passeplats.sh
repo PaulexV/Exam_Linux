@@ -1,5 +1,17 @@
-mkdir /tmp/out
+#!/bin/bash
 
-gzip -r /tmp/in/ 
+IN="/tmp/in"
+OUT="/tmp/out"
 
-cp /tmp/in/* /tmp/out/
+if [ -d "!$IN" ]; then
+	exit 3
+	echo "The in folder does not exist." 
+else
+	if [ -d "!$OUT" ]; then
+		mkdir /tmp/out 
+	fi
+
+	gzip -r /tmp/in/ 
+
+	cp /tmp/in/* /tmp/out/
+fi
